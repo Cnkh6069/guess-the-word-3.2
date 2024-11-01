@@ -4,6 +4,7 @@ import { getRandomWord } from "./utils";
 import { useState } from "react";
 import { useEffect } from "react";
 import { AddGuess } from "./component/userGuess";
+import { LivesLeft } from "./component/lifeleft";
 
 function App() {
   // currWord is the current secret word for this round. Update this with the updater function after each round.
@@ -30,7 +31,7 @@ function App() {
 
   //5. Add logic and state to track whether the user has guessed all letters of the word and how many guesses the user has left (can start with 10).
   const [gameRounds, setGameRounds] = useState(10);
-  const [score, setScore] = useState(0);
+  // const [score, setScore] = useState(0);
 
   //6. If the user guesses all letters correctly, tell them they have won. If the user runs out of guesses, reveal the word and tell them they have lost.
   // create additional function to power the
@@ -86,6 +87,7 @@ function App() {
       </div>
       <div className="card">
         <h1>Guess The Word 🚀</h1>
+        <LivesLeft gameRounds={gameRounds} setGameRounds={setGameRounds} />
         <h3>Word Display</h3>
         {generateWordDisplay()}
         <h3>Guessed Letters</h3>
